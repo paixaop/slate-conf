@@ -42,6 +42,9 @@ bind m:alt;shift focus ${messages}
 alias browser 'Safari'
 bind b:alt;shift focus ${browser}
 
+alias finder 'Finder'
+bind f:alt;shift focus ${finder}
+
 
 # SLATE FEATURES
 # -------------------------------------------------------------------
@@ -250,6 +253,7 @@ layout 3monitors ${telegram}:REPEAT ${samsung-topLeft}
 layout 3monitors ${messages}:REPEAT ${samsung-topRight}
 layout 3monitors ${whatsapp}:REPEAT ${samsung-bottomLeft}
 layout 3monitors "Skype":REPEAT ${samsung-bottomRight}
+layout 3monitors ${finder}:REPEAT ${macbook-rightHalf}
 
 # Bind a key to trigger this layout
 bind pad=:${hyper} layout 3monitors

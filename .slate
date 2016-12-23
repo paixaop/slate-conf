@@ -1,0 +1,322 @@
+# GLOBAL CONFIGURATIONS
+# -------------------------------------------------------------------
+# See https://github.com/jigish/slate/wiki/Global-Configs
+
+config defaultToCurrentScreen true
+config secondsBeforeRepeat 0.4
+config secondsBetweenRepeat 0.1
+config keyboardLayout "qwerty"
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+
+# HYPER KEYS
+# -------------------------------------------------------------------
+# The "hyper" key is a shortcut for CTRL + ALT + CMD
+# The "hyper2" key is a shortcut for CTRL + CMD
+
+alias hyper ctrl;alt;cmd
+alias hyper2 ctrl;cmd
+
+
+# APPLICATION ALIASES AND BINDINGS
+# -------------------------------------------------------------------
+alias mail 'Thunderbird'
+bind e:alt;shift focus ${mail}
+
+alias editor 'Code'
+bind c:alt;shift focus ${editor}
+
+alias terminal 'Terminal'
+bind t:alt;shift focus ${terminal}
+
+alias telegram 'Telegram'
+bind r:alt;shift focus ${telegram}
+
+alias whatsapp 'WhatsApp'
+bind w:alt;shift focus ${whatsapp}
+
+alias messages 'Messages'
+bind m:alt;shift focus ${messages}
+
+alias browser 'Safari'
+bind b:alt;shift focus ${browser}
+
+
+# SLATE FEATURES
+# -------------------------------------------------------------------
+
+# Show quick key overlays for each window
+config windowHintsShowIcons true
+config windowHintsSpread true
+config windowHintsIgnoreHiddenWindows false
+bind h:${hyper2} hint ASDFHJKLQWERTYUIOPCVBNG
+
+# Show a positioning grid for each monitor
+bind g:${hyper2} grid padding:5 0:6,2 1:8,3
+
+# Better application switcher
+# bind tab:cmd switch
+
+# Reload Slate configuration file
+bind s:${hyper2} relaunch
+
+
+# GENERAL POSITION ALIASES AND BINDINGS
+# -------------------------------------------------------------------
+# These positions are not tied to any screen. Each position gets an
+# alias and then a keybinding. The keybindings are all mapped to the
+# numberpad.
+
+# Center & Full Screen
+# -------------------------------------------------------------------
+# Keypad 0 = Center
+alias center move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY
+bind pad0:${hyper} ${center}
+bind 0:${hyper} ${center}
+
+# Keypad 5 = fullscreen
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+bind pad5:${hyper} ${full}
+bind 5:${hyper} ${full}
+
+# Corners
+# -------------------------------------------------------------------
+# Keypad 5 = Top Left Corner
+alias topLeftCorner move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2
+bind pad7:${hyper} ${topLeftCorner}
+bind 7:${hyper} ${topLeftCorner}
+
+# Keypad 9 = Top Right Corner
+alias topRightCorner move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
+bind pad9:${hyper} ${topRightCorner}
+bind 9:${hyper} ${topRightCorner}
+
+# Keypad 1 = Bottom Left Corner
+alias bottomLeftCorner move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind pad1:${hyper} ${bottomLeftCorner}
+bind 1:${hyper} ${bottomLeftCorner}
+
+# Keypad 3 = Bottom Right Corner
+alias bottomRightCorner move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind pad3:${hyper} ${bottomRightCorner}
+bind 3:${hyper} ${bottomRightCorner}
+
+# Halves
+# -------------------------------------------------------------------
+# Keypad row 4 = Left Half
+alias leftHalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+bind pad4:${hyper} ${leftHalf}
+bind 4:${hyper} ${leftHalf}
+
+# Keypad row 6 = Rigth Half
+alias rightHalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+bind pad6:${hyper} ${rightHalf}
+bind 6:${hyper} ${rightHalf}
+
+# Keypad 8 = Top Half
+alias topHalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+bind pad8:${hyper} ${topHalf}
+bind 8:${hyper} ${topHalf}
+
+# Keypad 2 = Bottom Half
+alias bottomHalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+bind pad2:${hyper} ${bottomHalf}
+bind 2:${hyper} ${bottomHalf}
+
+
+# Thirds
+# -------------------------------------------------------------------
+# Keypad 4 = Left Third
+alias leftThird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+bind pad4:${hyper2} ${leftThird}
+
+# Keypad 5 = Center Third
+alias midThird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+bind pad5:${hyper2} ${midThird}
+
+# Keypad 6 = Right Third
+alias rightThird move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+bind pad6:${hyper2} ${rightThird}
+
+# Keypad - = Left Two Thirds
+alias leftTwoThirds move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY
+bind pad-:${hyper2} ${leftTwoThirds}
+
+# Keypad + = Right Two Thirds
+alias rightTwoThirds move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY
+bind pad+:${hyper2} ${rightTwoThirds}
+
+
+# MONITOR-BASED POSITION ALIASES
+# -------------------------------------------------------------------
+# These aliases move windows to specific positions on a specific
+# monitor.
+
+# MONITOR ALIASES
+# -------------------------------------------------------------------
+# Define the resolution of each monitor connected to your Mac
+
+alias monitor-macbook 1440x900
+alias monitor-samsung 1920x1200
+alias monitor-lg 3440x1440
+
+#
+# Macbook monitor
+# -------------------------------------------------------------------
+alias macbook-full move screenOriginX;screenOriginY screenSizeX;screenSizeY ${monitor-macbook}
+alias macbook-leftHalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY ${monitor-macbook}
+alias macbook-rightHalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY ${monitor-macbook}
+alias macbook-center move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY ${monitor-macbook}
+
+# Thirds
+alias macbook-leftThird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY ${monitor-macbook}
+alias macbook-midThird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-macbook}
+alias macbook-rightThird move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-macbook}
+alias macbook-leftTwoThirds move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-macbook}
+alias macbook-rightTwoThirds move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-macbook}
+
+alias macbook-leftFifth move screenOriginX;screenOriginY screenSizeX/5;screenSizeY ${monitor-macbook}
+alias macbook-rightFourFifths move (screenOriginX+screenSizeX/5)+14;screenOriginY (4*screenSizeX/5)-14;screenSizeY ${monitor-macbook}
+alias macbook-topHalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2 ${monitor-macbook}
+alias macbook-bottomHalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2 ${monitor-macbook}
+
+# Corners
+alias macbook-topLeft move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-macbook}
+alias macbook-bottomRight move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-macbook}
+alias macbook-topRight move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-macbook}
+alias macbook-bottomLeft move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-macbook}
+
+#
+# Samsung monitor
+# -------------------------------------------------------------------
+alias samsung-full move screenOriginX;screenOriginY screenSizeX;screenSizeY ${monitor-samsung}
+alias samsung-leftHalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY ${monitor-samsung}
+alias samsung-rightHalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY ${monitor-samsung}
+alias lg-samsung move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY ${monitor-samsung}
+
+# Thirds
+alias samsung-leftThird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY ${monitor-samsung}
+alias samsung-midThird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-samsung}
+alias samsung-rightThird move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-samsung}
+alias samsung-leftTwoThirds move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-samsung}
+alias samsung-rightTwoThirds move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-samsung}
+
+alias samsung-leftFifth move screenOriginX;screenOriginY screenSizeX/5;screenSizeY ${monitor-samsung}
+alias samsung-rightFourFifths move (screenOriginX+screenSizeX/5)+14;screenOriginY (4*screenSizeX/5)-14;screenSizeY ${monitor-samsung}
+alias samsung-topHalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2 ${monitor-samsung}
+alias samsung-bottomHalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2 ${monitor-samsung}
+
+# Corners
+alias samsung-topLeft move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-samsung}
+alias samsung-bottomRight move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-samsung}
+alias samsung-topRight move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-samsung}
+alias samsung-bottomLeft move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-samsung}
+
+#
+# LG monitor
+# -------------------------------------------------------------------
+alias lg-full move screenOriginX;screenOriginY screenSizeX;screenSizeY ${monitor-lg}
+alias lg-leftHalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY ${monitor-lg}
+alias lg-rightHalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY ${monitor-lg}
+alias lg-center move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY ${monitor-lg}
+
+# Thirds
+alias lg-leftThird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY ${monitor-lg}
+alias lg-midThird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-lg}
+alias lg-rightThird move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY ${monitor-lg}
+alias lg-leftTwoThirds move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-lg}
+alias lg-rightTwoThirds move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY ${monitor-lg}
+
+alias lg-leftFifth move screenOriginX;screenOriginY screenSizeX/5;screenSizeY ${monitor-lg}
+alias lg-rightFourFifths move (screenOriginX+screenSizeX/5)+14;screenOriginY (4*screenSizeX/5)-14;screenSizeY ${monitor-lg}
+alias lg-topHalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2 ${monitor-lg}
+alias lg-bottomHalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2 ${monitor-lg}
+
+# Corners
+alias lg-topLeft move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-lg}
+alias lg-bottomRight move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-lg}
+alias lg-topRight move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2 ${monitor-lg}
+alias lg-bottomLeft move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2 ${monitor-lg}
+
+# THREE MONITOR LAYOUT
+# -------------------------------------------------------------------
+
+layout 3monitors ${mail}:MAIN_FIRST ${lg-leftThird}
+layout 3monitors ${editor}:MAIN_FIRST ${lg-rightHalf}
+layout 3monitors ${terminal}:REPEAT ${macbook-leftHalf}
+layout 3monitors ${browser}:MAIN_FIRST ${lg-center}
+layout 3monitors ${telegram}:REPEAT ${samsung-topLeft}
+layout 3monitors ${messages}:REPEAT ${samsung-topRight}
+layout 3monitors ${whatsapp}:REPEAT ${samsung-bottomLeft}
+layout 3monitors "Skype":REPEAT ${samsung-bottomRight}
+
+# Bind a key to trigger this layout
+bind pad=:${hyper} layout 3monitors
+bind =:${hyper} layout 3monitors
+
+# Trigger this layout automatically when 3 monitors are present
+default 3monitors resolutions:${monitor-macbook};${monitor-lg};${monitor-samsung}
+
+# TWO MONITOR LAYOUT
+# -------------------------------------------------------------------
+
+layout 2monitors ${editor}:MAIN_FIRST ${lg-rightHalf}
+layout 2monitors ${terminal}:MAIN_FIRST ${macbook-leftHalf}
+layout 2monitors ${browser}:REPEAT ${lg-center}
+
+# Bind a key to trigger this layout
+bind pad/:${hyper} layout 2monitors
+bind /:${hyper} layout 2monitors
+
+# Trigger this layout automatically when 2 monitors are present
+default 2monitors resolutions:${monitor-macbook};${monitor-lg}
+
+# ONE MONITOR LAYOUT
+# -------------------------------------------------------------------
+
+layout 1monitors ${editor}:MAIN_FIRST ${macbook-leftHalf}
+layout 1monitors ${terminal}:MAIN_FIRST ${macbook-rightHalf}
+layout 1monitors ${browser}:REPEAT ${macbook-rightFourFifths}
+
+# Bind a key to trigger this layout
+bind pad*:${hyper} layout 1monitors
+
+# Trigger this layout automatically when 1 monitors are present
+default 1monitors resolutions:${monitor-macbook}
+
+# BINDINGS
+# -------------------------------------------------------------------
+# Mostly taken from
+# https://github.com/jigish/slate/blob/master/Slate/default.slate
+
+# Focus
+bind right:cmd;ctrl    focus right
+bind left:cmd;ctrl     focus left
+bind up:cmd;ctrl       focus behind
+bind down:cmd;ctrl     focus behind
+bind ]:alt;shift       focus right
+bind [:alt;shift       focus left
+bind =:alt;shift       focus behind
+
+# Throw
+bind ]:${hyper} throw right resize full
+bind [:${hyper}  throw left resize full
+
+# Resize
+bind right:alt;cmd       resize +5% +0
+bind left:alt;cmd        resize -5% +0
+bind up:alt;cmd          resize +0   -5%
+bind down:alt;cmd        resize +0   +5%
+
+# Nudge
+bind right:${hyper} nudge +10% +0
+bind left:${hyper}  nudge -10% +0
+bind up:${hyper}    nudge +0   -10%
+bind down:${hyper}  nudge +0   +10%
+
+# Push
+# bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
+# bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
+# bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
+# bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2

@@ -1,5 +1,7 @@
 # slate-conf
-Configuration file for Slate Window Manager for Mac
+Configuration file for Slate Window Manager for Mac.
+
+Copy all of the files to your home directory.
 
 This configuration supports up to 3 montiors, and is a good base to build your own. Don't get discouraged by the seeming complex configuration files, Slate is a very powerful tool that will help you be more productive.
 
@@ -233,4 +235,6 @@ let myApps = {
 ```
 
 Where `App Name` is the name of the application as seen by Slate. this can be obtained by clicking 'Current Windows Info' in the Slate menu.
-Defined the shortcut to focus on the application with `key` and configure the positions in each of the layouts, by assigning a position in a specific monitor. Layout names must match the ones configured in `monitorLayouts`, and the positions must be one of the standard poisitions in one of your screens. Screen names are defined in the `screens` variable.
+
+Defined the shortcut to focus on the application with `key` and configure the positions in each of the layouts, by assigning a position in a specific monitor. 
+Layout names must match the ones configured in `monitorLayouts`, and the positions must be one of the standard poisitions in one of your screens. Screen names are defined in the `screens` variable.

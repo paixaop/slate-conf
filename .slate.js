@@ -1,9 +1,11 @@
 /**
- * MONITORS
+ * Slate Javasript configuration file
  */
 S.log("[SLATE] -------------- Started Loading Config from .slate.js --------------");
 
-let monitors = {
+// Configure your screens/monitors. These definitions MUST match the screens on your
+// setup. To configure your screens click 'Current Window Info' from the slate menu.
+let screens = {
     samsung: {
         resolution: "1200x1920",
         id: 0
@@ -21,7 +23,6 @@ let monitors = {
         id: 3
     }
 };
-
 
 // Slate configuration options
 slate.defaultToCurrentScreen = true;
@@ -235,13 +236,13 @@ let standardPositions = {
     }
 };
 
-slate.log(`Binding standard standardPositions to monitors`);
+slate.log(`Binding standard standardPositions to screens`);
 let i = 0;
 for (let pos in standardPositions) {
-    for (let name in monitors) {
-        standardPositions[pos].screen = monitors[name].id;
-        monitors[name][pos] = _.clone(standardPositions[pos]);
-        slate.log(`monitors.${name}.${pos} created ${JSON.stringify(monitors[name][pos])}`);
+    for (let name in screens) {
+        standardPositions[pos].screen = screens[name].id;
+        screens[name][pos] = _.clone(standardPositions[pos]);
+        slate.log(`screens.${name}.${pos} created ${JSON.stringify(screens[name][pos])}`);
         i++;
     }
     delete standardPositions[pos].screen;
@@ -250,7 +251,7 @@ for (let pos in standardPositions) {
     }
 }
 slate.log(`${Object.keys(standardPositions).length} standard standardPositions defined`);
-slate.log(`Created ${i} standard standardPositions for ${Object.keys(monitors).length} monitors`);
+slate.log(`Created ${i} standard standardPositions for ${Object.keys(screens).length} screens`);
 
 let monitorLayouts = {
     fourMonitors : {
@@ -269,89 +270,89 @@ let myApps = {
     'Mail': {
         key: sc1('e'),
         position: {
-            fourMonitors: monitors.asus.bottomTwoThirds,
-            threeMonitors: monitors.asus.bottomTwoThirds,
-            twoMonitors: monitors.lg.rightOneThird
+            fourMonitors: screens.asus.bottomTwoThirds,
+            threeMonitors: screens.asus.bottomTwoThirds,
+            twoMonitors: screens.lg.rightOneThird
         }
     },
     'Calendar': {
         key: sc1('l'),
         position: {
-            fourMonitors: monitors.samsung.topOneThird,
-            threeMonitors: monitors.asus.topOneThird,
-            twoMonitors: monitors.mac.bottomLeftCorner,
+            fourMonitors: screens.samsung.topOneThird,
+            threeMonitors: screens.asus.topOneThird,
+            twoMonitors: screens.mac.bottomLeftCorner,
         }
     },
     'Code': {
         key: sc1('c'),
         position: {
-            fourMonitors: monitors.asus.bottomTwoThirds,
-            threeMonitors: monitors.asus.bottomOneThird,
-            twoMonitors: monitors.lg.rightOneThird,
+            fourMonitors: screens.asus.bottomTwoThirds,
+            threeMonitors: screens.asus.bottomOneThird,
+            twoMonitors: screens.lg.rightOneThird,
         }
     },
     'Terminal': {
         key: sc1('t'),
         position: {
-            fourMonitors: monitors.mac.leftHalf,
-            threeMonitors: monitors.mac.leftHalf,
-            twoMonitors: monitors.mac.leftHalf,
+            fourMonitors: screens.mac.leftHalf,
+            threeMonitors: screens.mac.leftHalf,
+            twoMonitors: screens.mac.leftHalf,
         }
     },
     'Telegram': {
         key: sc1('r'),
         position: {
-            fourMonitors: monitors.asus.leftOneHalfByOneThird,
-            threeMonitors: monitors.asus.leftOneThirdTopHalf,
-            twoMonitors: monitors.mac.topRightCorner
+            fourMonitors: screens.asus.leftOneHalfByOneThird,
+            threeMonitors: screens.asus.leftOneThirdTopHalf,
+            twoMonitors: screens.mac.topRightCorner
         }
     },
     'WhatsApp': {
         key: sc1('w'),
         position: {
-            fourMonitors: monitors.samsung.rightOneHalfByOneThird,
-            threeMonitors: monitors.asus.rightOneThirdTopHalf,
-            twoMonitors: monitors.mac.bottomRightCorner
+            fourMonitors: screens.samsung.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.bottomRightCorner
         }
     },
     'Messages': {
         key: sc1('m'),
         position: {
-            fourMonitors: monitors.asus.rightOneHalfByOneThird,
-            threeMonitors: monitors.asus.rightOneThirdTopHalf,
-            twoMonitors: monitors.mac.rightHalf
+            fourMonitors: screens.asus.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.rightHalf
         }
     },
     'Google Chrome': {
         key: sc1('b'),
         position: {
-            fourMonitors: monitors.lg.rightOneThird,
-            threeMonitors: monitors.lg.rightOneThird,
-            twoMonitors: monitors.lg.rightOneThird
+            fourMonitors: screens.lg.rightOneThird,
+            threeMonitors: screens.lg.rightOneThird,
+            twoMonitors: screens.lg.rightOneThird
         }
     },
     'Safari': {
         key: sc1('s'),
         position: {
-            fourMonitors: monitors.lg.leftOneThird,
-            threeMonitors: monitors.lg.leftOneThird,
-            twoMonitors: monitors.lg.leftOneThird
+            fourMonitors: screens.lg.leftOneThird,
+            threeMonitors: screens.lg.leftOneThird,
+            twoMonitors: screens.lg.leftOneThird
         }
     },
     'Finder': {
         key: sc1('f'),
         position: {
-            fourMonitors: monitors.mac.rightHalf,
-            threeMonitors: monitors.mac.rightHalf,
-            twoMonitors: monitors.mac.rightHalf,
+            fourMonitors: screens.mac.rightHalf,
+            threeMonitors: screens.mac.rightHalf,
+            twoMonitors: screens.mac.rightHalf,
         }
     },
     'Microsoft Excel': {
         key: sc1('x'),
         position: {
-            fourMonitors: monitors.lg.rightTwoThirds,
-            threeMonitors: monitors.lg.rightTwoThirds,
-            twoMonitors: monitors.lg.rightTwoThirds
+            fourMonitors: screens.lg.rightTwoThirds,
+            threeMonitors: screens.lg.rightTwoThirds,
+            twoMonitors: screens.lg.rightTwoThirds
         }
     }
 };
@@ -369,7 +370,7 @@ bindKeys(sc1, {
 bindKeys(sc2, {
     'right': moveToScreen('right'),
     'left': moveToScreen('left'),
-    'y': monitors.asus.bottomTwoThirds,
+    'y': screens.asus.bottomTwoThirds,
     'r': relaunch()
 });
 

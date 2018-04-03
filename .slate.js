@@ -59,121 +59,6 @@ let monitorLayouts = {
     }
 };
 
-// Applications definitions
-let myApps = {
-    'Mail': { // App name as seen by slate. Check 'Current Windows Info' from the slate menu
-        key: sc1('e'),  // Shortcut to focus on the app
-        position: { // layouts
-            fourMonitors: screens.asus.bottomTwoThirds,  // layoutName: screens.screenName.poistion
-            threeMonitors: screens.asus.bottomTwoThirds,
-            twoMonitors: screens.lg.rightOneThird
-        }
-    },
-    'Calendar': {
-        key: sc1('l'),
-        position: {
-            fourMonitors: screens.samsung.topOneThird,
-            threeMonitors: screens.asus.topOneThird,
-            twoMonitors: screens.mac.bottomLeftCorner,
-        }
-    },
-    'Code': {
-        key: sc1('c'),
-        position: {
-            fourMonitors: screens.asus.bottomTwoThirds,
-            threeMonitors: screens.asus.bottomOneThird,
-            twoMonitors: screens.lg.rightOneThird,
-        }
-    },
-    'Terminal': {
-        key: sc1('t'),
-        position: {
-            fourMonitors: screens.mac.leftHalf,
-            threeMonitors: screens.mac.leftHalf,
-            twoMonitors: screens.mac.leftHalf,
-        }
-    },
-    'Telegram': {
-        key: sc1('r'),
-        position: {
-            fourMonitors: screens.asus.leftOneHalfByOneThird,
-            threeMonitors: screens.asus.leftOneThirdTopHalf,
-            twoMonitors: screens.mac.topRightCorner
-        }
-    },
-    'WhatsApp': {
-        key: sc1('w'),
-        position: {
-            fourMonitors: screens.samsung.rightOneHalfByOneThird,
-            threeMonitors: screens.asus.rightOneThirdTopHalf,
-            twoMonitors: screens.mac.bottomRightCorner
-        }
-    },
-    'Messages': {
-        key: sc1('m'),
-        position: {
-            fourMonitors: screens.asus.rightOneHalfByOneThird,
-            threeMonitors: screens.asus.rightOneThirdTopHalf,
-            twoMonitors: screens.mac.rightHalf
-        }
-    },
-    'Google Chrome': {
-        key: sc1('b'),
-        position: {
-            fourMonitors: screens.lg.rightOneThird,
-            threeMonitors: screens.lg.rightOneThird,
-            twoMonitors: screens.lg.rightOneThird
-        }
-    },
-    'Safari': {
-        key: sc1('s'),
-        position: {
-            fourMonitors: screens.lg.leftOneThird,
-            threeMonitors: screens.lg.leftOneThird,
-            twoMonitors: screens.lg.leftOneThird
-        }
-    },
-    'Finder': {
-        key: sc1('f'),
-        position: {
-            fourMonitors: screens.mac.rightHalf,
-            threeMonitors: screens.mac.rightHalf,
-            twoMonitors: screens.mac.rightHalf,
-        }
-    },
-    'Microsoft Excel': {
-        key: sc1('x'),
-        position: {
-            fourMonitors: screens.lg.rightTwoThirds,
-            threeMonitors: screens.lg.rightTwoThirds,
-            twoMonitors: screens.lg.rightTwoThirds
-        }
-    }
-};
-
-// Moves bound to shortcut 1
-bindKeys(sc1, {
-    "right": slide('right'),
-    "left": slide('left'),
-    "up": slide('up'),
-    "down": slide('down'),
-});
-
-// Moves bound to shortcut 2
-bindKeys(sc2, {
-    'right': moveToScreen('right'),
-    'left': moveToScreen('left'),
-    'r': relaunch()
-});
-
-// Moves boud to shortcut 3
-//bindKeys(sc3, );
-
-// ***************************************************************************
-// From here on out it's just supporting code. 
-// Change if you need to add new positions, or 
-// correct some bug
-// ***************************************************************************
 // Define standard screen positions
 let standardPositions = {
     fullScreen: { key: sc1('pad5') },
@@ -364,25 +249,144 @@ let standardPositions = {
         vPosition: 4
     }
 };
+BindScreenPositions(standardPositions, screens);
 
-slate.log(`Binding standard standardPositions to screens`);
-let i = 0;
-for (let pos in standardPositions) {
-    for (let name in screens) {
-        standardPositions[pos].screen = screens[name].id;
-        screens[name][pos] = _.clone(standardPositions[pos]);
-        slate.log(`screens.${name}.${pos} created ${JSON.stringify(screens[name][pos])}`);
-        i++;
-    }
-    delete standardPositions[pos].screen;
-    if( standardPositions[pos].key ) {
-        slate.bind(standardPositions[pos].key, move(standardPositions[pos]));
-    }
-}
-slate.log(`${Object.keys(standardPositions).length} standard standardPositions defined`);
-slate.log(`Created ${i} standard standardPositions for ${Object.keys(screens).length} screens`);
 
+// Applications definitions
+let myApps = {
+    'Mail': { // App name as seen by slate. Check 'Current Windows Info' from the slate menu
+        key: sc1('e'),  // Shortcut to focus on the app
+        position: { // layouts
+            fourMonitors: screens.asus.bottomTwoThirds,  // layoutName: screens.screenName.poistion
+            threeMonitors: screens.asus.bottomTwoThirds,
+            twoMonitors: screens.lg.rightOneThird
+        }
+    },
+    'Calendar': {
+        key: sc1('l'),
+        position: {
+            fourMonitors: screens.samsung.topOneThird,
+            threeMonitors: screens.asus.topOneThird,
+            twoMonitors: screens.mac.bottomLeftCorner,
+        }
+    },
+    'Code': {
+        key: sc1('c'),
+        position: {
+            fourMonitors: screens.asus.bottomTwoThirds,
+            threeMonitors: screens.asus.bottomOneThird,
+            twoMonitors: screens.lg.rightOneThird,
+        }
+    },
+    'Terminal': {
+        key: sc1('t'),
+        position: {
+            fourMonitors: screens.mac.leftHalf,
+            threeMonitors: screens.mac.leftHalf,
+            twoMonitors: screens.mac.leftHalf,
+        }
+    },
+    'Telegram': {
+        key: sc1('r'),
+        position: {
+            fourMonitors: screens.asus.leftOneHalfByOneThird,
+            threeMonitors: screens.asus.leftOneThirdTopHalf,
+            twoMonitors: screens.mac.topRightCorner
+        }
+    },
+    'WhatsApp': {
+        key: sc1('w'),
+        position: {
+            fourMonitors: screens.samsung.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.bottomRightCorner
+        }
+    },
+    'Messages': {
+        key: sc1('m'),
+        position: {
+            fourMonitors: screens.asus.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.rightHalf
+        }
+    },
+    'Google Chrome': {
+        key: sc1('b'),
+        position: {
+            fourMonitors: screens.lg.rightOneThird,
+            threeMonitors: screens.lg.rightOneThird,
+            twoMonitors: screens.lg.rightOneThird
+        }
+    },
+    'Safari': {
+        key: sc1('s'),
+        position: {
+            fourMonitors: screens.lg.leftOneThird,
+            threeMonitors: screens.lg.leftOneThird,
+            twoMonitors: screens.lg.leftOneThird
+        }
+    },
+    'Finder': {
+        key: sc1('f'),
+        position: {
+            fourMonitors: screens.mac.rightHalf,
+            threeMonitors: screens.mac.rightHalf,
+            twoMonitors: screens.mac.rightHalf,
+        }
+    },
+    'Microsoft Excel': {
+        key: sc1('x'),
+        position: {
+            fourMonitors: screens.lg.rightTwoThirds,
+            threeMonitors: screens.lg.rightTwoThirds,
+            twoMonitors: screens.lg.rightTwoThirds
+        }
+    }
+};
+
+// Moves bound to shortcut 1
+bindKeys(sc1, {
+    "right": slide('right'),
+    "left": slide('left'),
+    "up": slide('up'),
+    "down": slide('down'),
+});
+
+// Moves bound to shortcut 2
+bindKeys(sc2, {
+    'right': moveToScreen('right'),
+    'left': moveToScreen('left'),
+    'r': relaunch()
+});
+
+// Moves boud to shortcut 3
+//bindKeys(sc3, );
 bindApps(myApps, monitorLayouts);
+
+// ***************************************************************************
+// From here on out it's just supporting code. 
+// Change if you need to add new positions, or 
+// correct some bug
+// ***************************************************************************
+
+function BindScreenPositions(positions, screens) {
+    slate.log(`Binding standard positions to screens`);
+    let i = 0;
+    for (let pos in positions) {
+        for (let name in screens) {
+            positions[pos].screen = screens[name].id;
+            screens[name][pos] = _.clone(positions[pos]);
+            slate.log(`screens.${name}.${pos} created ${JSON.stringify(screens[name][pos])}`);
+            i++;
+        }
+        delete positions[pos].screen;
+        if( positions[pos].key ) {
+            slate.bind(positions[pos].key, move(positions[pos]));
+        }
+    }
+    slate.log(`${Object.keys(positions).length} standard positions defined`);
+    slate.log(`Created ${i} standard positions for ${Object.keys(screens).length} screens`);
+}
 
 /**************'
  * Utility functions.

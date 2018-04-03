@@ -361,6 +361,8 @@ bindKeys(sc2, {
 
 // Moves boud to shortcut 3
 //bindKeys(sc3, );
+
+// Bind all application shortcuts and create all layouts
 bindApps(myApps, monitorLayouts);
 
 // ***************************************************************************
@@ -369,6 +371,7 @@ bindApps(myApps, monitorLayouts);
 // correct some bug
 // ***************************************************************************
 
+// Bind screen positions to keys and to all screens
 function BindScreenPositions(positions, screens) {
     slate.log(`Binding standard positions to screens`);
     let i = 0;
@@ -387,11 +390,6 @@ function BindScreenPositions(positions, screens) {
     slate.log(`${Object.keys(positions).length} standard positions defined`);
     slate.log(`Created ${i} standard positions for ${Object.keys(screens).length} screens`);
 }
-
-/**************'
- * Utility functions.
- * Unless you find a bug or you want to change behavour.
- */
 
  // Relaunch Slate and read config file again. Use if you make changes to this file
 function relaunch() {

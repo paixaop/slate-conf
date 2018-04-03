@@ -2,28 +2,6 @@
  * Slate Javasript configuration file
  */
 S.log("[SLATE] -------------- Started Loading Config from .slate.js --------------");
-
-// Configure your screens/monitors. These definitions MUST match the screens on your
-// setup. To configure your screens click 'Current Window Info' from the slate menu.
-let screens = {
-    samsung: {
-        resolution: "1200x1920",
-        id: 0
-    },
-    asus: {
-        resolution: "1692x3008",
-        id: 1
-    },
-    lg: {
-        resolution: "3440x1440",
-        id: 2
-    },
-    mac: {
-        resolution: "1440x900",
-        id: 3
-    }
-};
-
 // Slate configuration options
 slate.defaultToCurrentScreen = true;
 slate.secondsBeforeRepeat = 0.4;
@@ -46,6 +24,157 @@ let sc3 = function (key) {
     return key + ":ctrl;cmd;shift";
 };
 
+// Configure your screens/monitors. These definitions MUST match the screens on your
+// setup. To configure your screens click 'Current Window Info' from the slate menu.
+let screens = {
+    samsung: {
+        resolution: "1200x1920",
+        id: 0
+    },
+    asus: {
+        resolution: "1692x3008",
+        id: 1
+    },
+    lg: {
+        resolution: "3440x1440",
+        id: 2
+    },
+    mac: {
+        resolution: "1440x900",
+        id: 3
+    }
+};
+
+// Define all available monitor layouts and assign a shortcut for each
+// These are te only layout names you can use in the applicaiton definitions.
+let monitorLayouts = {
+    fourMonitors : {
+        key: sc1('4'),
+    },
+    threeMonitors: {
+        key: sc1('3'),
+    },
+    twoMonitors: {
+        key: sc1('2'),
+    }
+};
+
+// Applications definitions
+let myApps = {
+    'Mail': { // App name as seen by slate. Check 'Current Windows Info' from the slate menu
+        key: sc1('e'),  // Shortcut to focus on the app
+        position: { // layouts
+            fourMonitors: screens.asus.bottomTwoThirds,  // layoutName: screens.screenName.poistion
+            threeMonitors: screens.asus.bottomTwoThirds,
+            twoMonitors: screens.lg.rightOneThird
+        }
+    },
+    'Calendar': {
+        key: sc1('l'),
+        position: {
+            fourMonitors: screens.samsung.topOneThird,
+            threeMonitors: screens.asus.topOneThird,
+            twoMonitors: screens.mac.bottomLeftCorner,
+        }
+    },
+    'Code': {
+        key: sc1('c'),
+        position: {
+            fourMonitors: screens.asus.bottomTwoThirds,
+            threeMonitors: screens.asus.bottomOneThird,
+            twoMonitors: screens.lg.rightOneThird,
+        }
+    },
+    'Terminal': {
+        key: sc1('t'),
+        position: {
+            fourMonitors: screens.mac.leftHalf,
+            threeMonitors: screens.mac.leftHalf,
+            twoMonitors: screens.mac.leftHalf,
+        }
+    },
+    'Telegram': {
+        key: sc1('r'),
+        position: {
+            fourMonitors: screens.asus.leftOneHalfByOneThird,
+            threeMonitors: screens.asus.leftOneThirdTopHalf,
+            twoMonitors: screens.mac.topRightCorner
+        }
+    },
+    'WhatsApp': {
+        key: sc1('w'),
+        position: {
+            fourMonitors: screens.samsung.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.bottomRightCorner
+        }
+    },
+    'Messages': {
+        key: sc1('m'),
+        position: {
+            fourMonitors: screens.asus.rightOneHalfByOneThird,
+            threeMonitors: screens.asus.rightOneThirdTopHalf,
+            twoMonitors: screens.mac.rightHalf
+        }
+    },
+    'Google Chrome': {
+        key: sc1('b'),
+        position: {
+            fourMonitors: screens.lg.rightOneThird,
+            threeMonitors: screens.lg.rightOneThird,
+            twoMonitors: screens.lg.rightOneThird
+        }
+    },
+    'Safari': {
+        key: sc1('s'),
+        position: {
+            fourMonitors: screens.lg.leftOneThird,
+            threeMonitors: screens.lg.leftOneThird,
+            twoMonitors: screens.lg.leftOneThird
+        }
+    },
+    'Finder': {
+        key: sc1('f'),
+        position: {
+            fourMonitors: screens.mac.rightHalf,
+            threeMonitors: screens.mac.rightHalf,
+            twoMonitors: screens.mac.rightHalf,
+        }
+    },
+    'Microsoft Excel': {
+        key: sc1('x'),
+        position: {
+            fourMonitors: screens.lg.rightTwoThirds,
+            threeMonitors: screens.lg.rightTwoThirds,
+            twoMonitors: screens.lg.rightTwoThirds
+        }
+    }
+};
+
+// Moves bound to shortcut 1
+bindKeys(sc1, {
+    "right": slide('right'),
+    "left": slide('left'),
+    "up": slide('up'),
+    "down": slide('down'),
+});
+
+// Moves bound to shortcut 2
+bindKeys(sc2, {
+    'right': moveToScreen('right'),
+    'left': moveToScreen('left'),
+    'r': relaunch()
+});
+
+// Moves boud to shortcut 3
+//bindKeys(sc3, );
+
+// ***************************************************************************
+// From here on out it's just supporting code. 
+// Change if you need to add new positions, or 
+// correct some bug
+// ***************************************************************************
+// Define standard screen positions
 let standardPositions = {
     fullScreen: { key: sc1('pad5') },
 
@@ -253,135 +382,14 @@ for (let pos in standardPositions) {
 slate.log(`${Object.keys(standardPositions).length} standard standardPositions defined`);
 slate.log(`Created ${i} standard standardPositions for ${Object.keys(screens).length} screens`);
 
-let monitorLayouts = {
-    fourMonitors : {
-        key: sc1('4'),
-    },
-    threeMonitors: {
-        key: sc1('3'),
-    },
-    twoMonitors: {
-        key: sc1('2'),
-    }
-};
-
-// Applications Aliases
-let myApps = {
-    'Mail': {
-        key: sc1('e'),
-        position: {
-            fourMonitors: screens.asus.bottomTwoThirds,
-            threeMonitors: screens.asus.bottomTwoThirds,
-            twoMonitors: screens.lg.rightOneThird
-        }
-    },
-    'Calendar': {
-        key: sc1('l'),
-        position: {
-            fourMonitors: screens.samsung.topOneThird,
-            threeMonitors: screens.asus.topOneThird,
-            twoMonitors: screens.mac.bottomLeftCorner,
-        }
-    },
-    'Code': {
-        key: sc1('c'),
-        position: {
-            fourMonitors: screens.asus.bottomTwoThirds,
-            threeMonitors: screens.asus.bottomOneThird,
-            twoMonitors: screens.lg.rightOneThird,
-        }
-    },
-    'Terminal': {
-        key: sc1('t'),
-        position: {
-            fourMonitors: screens.mac.leftHalf,
-            threeMonitors: screens.mac.leftHalf,
-            twoMonitors: screens.mac.leftHalf,
-        }
-    },
-    'Telegram': {
-        key: sc1('r'),
-        position: {
-            fourMonitors: screens.asus.leftOneHalfByOneThird,
-            threeMonitors: screens.asus.leftOneThirdTopHalf,
-            twoMonitors: screens.mac.topRightCorner
-        }
-    },
-    'WhatsApp': {
-        key: sc1('w'),
-        position: {
-            fourMonitors: screens.samsung.rightOneHalfByOneThird,
-            threeMonitors: screens.asus.rightOneThirdTopHalf,
-            twoMonitors: screens.mac.bottomRightCorner
-        }
-    },
-    'Messages': {
-        key: sc1('m'),
-        position: {
-            fourMonitors: screens.asus.rightOneHalfByOneThird,
-            threeMonitors: screens.asus.rightOneThirdTopHalf,
-            twoMonitors: screens.mac.rightHalf
-        }
-    },
-    'Google Chrome': {
-        key: sc1('b'),
-        position: {
-            fourMonitors: screens.lg.rightOneThird,
-            threeMonitors: screens.lg.rightOneThird,
-            twoMonitors: screens.lg.rightOneThird
-        }
-    },
-    'Safari': {
-        key: sc1('s'),
-        position: {
-            fourMonitors: screens.lg.leftOneThird,
-            threeMonitors: screens.lg.leftOneThird,
-            twoMonitors: screens.lg.leftOneThird
-        }
-    },
-    'Finder': {
-        key: sc1('f'),
-        position: {
-            fourMonitors: screens.mac.rightHalf,
-            threeMonitors: screens.mac.rightHalf,
-            twoMonitors: screens.mac.rightHalf,
-        }
-    },
-    'Microsoft Excel': {
-        key: sc1('x'),
-        position: {
-            fourMonitors: screens.lg.rightTwoThirds,
-            threeMonitors: screens.lg.rightTwoThirds,
-            twoMonitors: screens.lg.rightTwoThirds
-        }
-    }
-};
 bindApps(myApps, monitorLayouts);
-
-// Moves bound to shortcut 1
-bindKeys(sc1, {
-    "right": slide('right'),
-    "left": slide('left'),
-    "up": slide('up'),
-    "down": slide('down'),
-});
-
-// Moves bound to shortcut 2
-bindKeys(sc2, {
-    'right': moveToScreen('right'),
-    'left': moveToScreen('left'),
-    'y': screens.asus.bottomTwoThirds,
-    'r': relaunch()
-});
-
-//bindKeys(sc3, );
-
 
 /**************'
  * Utility functions.
  * Unless you find a bug or you want to change behavour.
  */
 
+ // Relaunch Slate and read config file again. Use if you make changes to this file
 function relaunch() {
     return function() {
         slate.log('Relaunch opreration requested by user. Relaunch slate.');
@@ -390,6 +398,7 @@ function relaunch() {
     };
 }
 
+// Iterate the apps object and assign the keys and layouts
 function bindApps(apps, layouts) {
     slate.log(`Bingind Apps to keys and layouts`);
     let keys = Object.keys(apps);
@@ -449,7 +458,7 @@ function bindApps(apps, layouts) {
     }
 }
 
-// Bind all shortcuts to apps
+// Bind all shortcuts to operations
 function bindKeys(shortCut, moves) {
     for (let k in moves) {
         slate.log(`Binding ${shortCut(k)}`);
@@ -460,6 +469,21 @@ function bindKeys(shortCut, moves) {
 /**
  *  Return a move to the left or right half of the screen
  *  side: left, right
+ * 
+ *  opts is an object with the following properties
+ *    width : fraction to multiply the sreen width by, default: 1. 
+ *            1/2 will get you half the screen width for example
+ *    height : fraction to multiply the sreen height by, default: 1
+ *    hPosition: index of the position horizontally, leftmost is 0
+ *    hPosition: index of the position vertically, topmost is 0
+ *    offsetX: factor of the screen width to offset the window by
+ *    offsetY: factor of the screen height to offset the window by
+ * 
+ * all options default to 0 if not indicated above
+ * 
+ * Examples: 
+ *  { width : 1/3 } - left third, or 0 hPosition, height is full screen height
+ *  { width : 1/3, hPosition: 1 } - middle third, or 1 hPosition, height is full screen height
  */
 function move(opts, windowObject) {
     opts = opts || {};
@@ -502,6 +526,9 @@ function move(opts, windowObject) {
     };
 }
 
+// Slide. ie move, window into another screen area without resizing. 
+// So if the window is on the right top corner of the screen you can 'slide'
+// it to the left corner by calling slide('left')
 function slide(dir) {
 
     if (dir) {
@@ -573,6 +600,9 @@ function slide(dir) {
     };
 }
 
+// Move to another screen but keep window in the same position. 
+// So if the window is the the left third of one screen and you call `moveToScreen('left')` the 
+// window will be moved to same position on the screen to the left of the current screen.
 function moveToScreen(dir) {
     if (dir) {
         dir = dir.toLowerCase();
@@ -657,6 +687,7 @@ function moveToScreen(dir) {
     };
 }
 
+// Log window and movement coordinates. Check Mac OS console.
 function logCoords(c, win) {
     let screen = slate.screen();
     slate.log("[SLATE] -------------- Coords Log --------------");

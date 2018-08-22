@@ -16,7 +16,7 @@ This config includes some common definitions to move and resize windows
   * Corners - Top Right, Botton Rigth, Top Left, Bottom Left
   * Full Screen
 
-It also defines two main key bindings `Ctrl+Option+Cmd` and `Ctrl+Cmd`. They are called `hyper` and `hyper2` in the config file.
+It also defines two main key bindings `Ctrl+Option+Cmd` and `Ctrl+Cmd`. They are called `hyper` and `hyper2` in the config file, or `sc1` and `sc2` (for shortcut) in the JavaScript files and this readme.
 
 To move and resize the current window you need to use the Numeric Key Pad, or the number keys on your keyboard.
 

@@ -9,21 +9,20 @@ slate.log('[SLATE] -------------- Started Loading Config from .slate.js --------
 let monitors = {
     asusOne: {
         resolution: '1692x3008',
-        id: 4
+        id: 4,
     },
     asusTwo: {
         resolution: '1692x3008',
-        id: 5
+        id: 5,
     },
-
     lg: {
         resolution: '5120x1440',
-        id: 0
+        id: 0,
     },
     mac: {
         resolution: '1680x1050',
-        id: 1
-    }
+        id: 1,
+    },
 };
 
 slate.defaultToCurrentScreen = true;
@@ -34,14 +33,14 @@ slate.nudgePercentOf = 'screenSize';
 slate.resizePercentOf = 'screenSize';
 
 // Key shortcuts
-let sc1 = function(key) {
+let sc1 = function (key) {
     return key + ':ctrl;alt;cmd';
 };
-let sc2 = function(key) {
+let sc2 = function (key) {
     return key + ':ctrl;cmd';
 };
-let sc3 = function(key) {
-    return key + ':ctrl;cmd;shift';
+let sc3 = function (key) {
+    return key + ':ctrl;cmd;shift;alt';
 };
 
 let standardPositions = {
@@ -51,212 +50,212 @@ let standardPositions = {
     topLeftCorner: {
         key: sc1('pad7'),
         width: 1 / 2,
-        height: 1 / 2
+        height: 1 / 2,
     },
     topRightCorner: {
         key: sc1('pad9'),
         hPosition: 1,
         width: 1 / 2,
-        height: 1 / 2
+        height: 1 / 2,
     },
     bottomLeftCorner: {
         key: sc1('pad1'),
         vPosition: 1,
         width: 1 / 2,
-        height: 1 / 2
+        height: 1 / 2,
     },
     bottomRightCorner: {
         key: sc1('pad3'),
         hPosition: 1,
         vPosition: 1,
         width: 1 / 2,
-        height: 1 / 2
+        height: 1 / 2,
     },
 
     // Halves
     leftHalf: {
         key: sc1('pad4'),
-        width: 1 / 2
+        width: 1 / 2,
     },
     rightHalf: {
         key: sc1('pad6'),
         width: 1 / 2,
-        hPosition: 1
+        hPosition: 1,
     },
     topHalf: {
         key: sc1('pad8'),
-        height: 1 / 2
+        height: 1 / 2,
     },
     bottomHalf: {
         key: sc1('pad2'),
         height: 1 / 2,
-        vPosition: 1
+        vPosition: 1,
     },
 
     // 2/3 of Screen
     bottomTwoThirds: {
         key: sc2('pad0'),
         height: 2 / 3,
-        offsetY: 1 / 3
+        offsetY: 1 / 3,
     },
     leftTwoThirds: {
         key: sc2('pad1'),
-        width: 2 / 3
+        width: 2 / 3,
     },
     rightTwoThirds: {
         key: sc2('pad2'),
         width: 2 / 3,
-        offsetX: 1 / 3
+        offsetX: 1 / 3,
     },
     topTwoThirds: {
         key: sc2('pad3'),
-        height: 2 / 3
+        height: 2 / 3,
     },
 
     // 1/3 Horizontal
     leftOneThird: {
         key: sc2('pad4'),
-        width: 1 / 3
+        width: 1 / 3,
     },
     middleOneThird: {
         key: sc2('pad5'),
         width: 1 / 3,
-        hPosition: 1
+        hPosition: 1,
     },
     rightOneThird: {
         key: sc2('pad6'),
         width: 1 / 3,
-        hPosition: 2
+        hPosition: 2,
     },
     leftOneThirdTopHalf: {
         width: 1 / 3,
-        height: 1 / 2
+        height: 1 / 2,
     },
     middleOneThirdTopHalf: {
         width: 1 / 3,
         height: 1 / 2,
-        hPosition: 1
+        hPosition: 1,
     },
     rightOneThirdTopHalf: {
         width: 1 / 3,
         height: 1 / 2,
-        hPosition: 2
+        hPosition: 2,
     },
 
     // 1/3 Vertical
     topOneThird: {
         key: sc2('pad7'),
-        height: 1 / 3
+        height: 1 / 3,
     },
     middleOneThirdVertical: {
         key: sc2('pad8'),
         height: 1 / 3,
-        vPosition: 1
+        vPosition: 1,
     },
     bottomOneThird: {
         key: sc2('pad9'),
         height: 1 / 3,
-        vPosition: 2
+        vPosition: 2,
     },
     leftOneThirdBottomHalf: {
         width: 1 / 3,
         height: 1 / 2,
-        vPosition: 1
+        vPosition: 1,
     },
     middleOneThirdBottomHalf: {
         width: 1 / 3,
         height: 1 / 2,
         hPosition: 1,
-        vPosition: 1
+        vPosition: 1,
     },
     rightOneThirdBottomHalf: {
         width: 1 / 3,
         height: 1 / 2,
         hPosition: 2,
-        vPosition: 1
+        vPosition: 1,
     },
 
     leftOneHalfByOneThird: {
         width: 1 / 2,
-        height: 1 / 3
+        height: 1 / 3,
     },
     rightOneHalfByOneThird: {
         width: 1 / 2,
         height: 1 / 3,
-        hPosition: 1
+        hPosition: 1,
     },
 
     // 1/4 of screen
     firstOneFourth: {
         key: sc3('pad='),
-        width: 1 / 4
+        width: 1 / 4,
     },
     secondOneFourth: {
         key: sc3('pad8'),
         width: 1 / 4,
-        hPosition: 1
+        hPosition: 1,
     },
     thirdOneFourth: {
         key: sc3('pad5'),
         width: 1 / 4,
-        hPosition: 2
+        hPosition: 2,
     },
     fourthOneFourth: {
         key: sc3('pad2'),
         width: 1 / 4,
-        hPosition: 3
+        hPosition: 3,
     },
 
     // 1/5 of screen vertical
     firstOneFifth: {
         key: sc3('pad/'),
-        width: 1 / 5
+        width: 1 / 5,
     },
     secondOneFifth: {
         key: sc3('pad9'),
         width: 1 / 5,
-        hPosition: 1
+        hPosition: 1,
     },
     thirdOneFifth: {
         key: sc3('pad6'),
         width: 1 / 5,
-        hPosition: 2
+        hPosition: 2,
     },
     fourthOneFifth: {
         key: sc3('pad3'),
         width: 1 / 5,
-        hPosition: 3
+        hPosition: 3,
     },
     fifthOneFifth: {
         key: sc3('pad.'),
         width: 1 / 5,
-        hPosition: 4
+        hPosition: 4,
     },
 
     lg1: {
         key: sc2('1'),
-        width: 1 / 5
+        width: 1 / 5,
     },
 
     lg2: {
         key: sc2('2'),
         width: 1 / 3,
         hPosition: 0,
-        offsetX: 0.200195313
+        offsetX: 0.200195313,
     },
 
     lg3: {
         key: sc2('3'),
         width: 1 / 3,
         hPosition: 0,
-        offsetX: 0.53359375
+        offsetX: 0.53359375,
     },
 
     lg4: {
         key: sc2('4'),
         width: 0.132421875,
         height: 1 / 2,
-        offsetX: 0.866992188
+        offsetX: 0.866992188,
     },
 
     lg5: {
@@ -264,22 +263,22 @@ let standardPositions = {
         width: 0.132421875,
         height: 1 / 2,
         vPosition: 1,
-        offsetX: 0.866992188
+        offsetX: 0.866992188,
     },
 
     lg6: {
         key: sc2('6'),
         width: 2 / 3,
         hPosition: 0,
-        offsetX: 0.200195313
+        offsetX: 0.200195313,
     },
 
     lg7: {
         key: sc2('7'),
         width: 0.132421875,
         hPosition: 0,
-        offsetX: 0.866992188
-    }
+        offsetX: 0.866992188,
+    },
 };
 
 // Automatically add areas that are too tiresome to create by hand
@@ -316,17 +315,17 @@ slate.log(`Created ${i} standard standardPositions for ${Object.keys(monitors).l
 
 let monitorLayouts = {
     fourMonitors: {
-        key: sc1('4')
+        key: sc1('4'),
     },
     threeMonitors: {
-        key: sc1('3')
+        key: sc1('3'),
     },
     twoMonitors: {
-        key: sc1('2')
+        key: sc1('2'),
     },
     twoMonitorsCode: {
-        key: sc1('w')
-    }
+        key: sc1('w'),
+    },
 };
 
 // Applications Aliases
@@ -337,8 +336,8 @@ let myApps = {
             fourMonitors: monitors.asusTwo.bottomTwoThirds,
             threeMonitors: monitors.asusTwo.bottomTwoThirds,
             twoMonitors: monitors.lg.lg1,
-            twoMonitorsCode: monitors.lg.lg1
-        }
+            twoMonitorsCode: monitors.lg.lg1,
+        },
     },
     Calendar: {
         key: sc1('l'),
@@ -346,8 +345,17 @@ let myApps = {
             fourMonitors: monitors.asusOne.leftOneHalfByOneThird,
             threeMonitors: monitors.asusTwo.leftOneHalfByOneThird,
             twoMonitors: monitors.mac.rightHalf,
-            twoMonitorsCode: monitors.mac.rightHalf
-        }
+            twoMonitorsCode: monitors.mac.rightHalf,
+        },
+    },
+    'Microsoft Teams': {
+        key: sc1('m'),
+        position: {
+            fourMonitors: monitors.asusTwo.bottomTwoThirds,
+            threeMonitors: monitors.asusTwo.bottomOneThird,
+            twoMonitors: monitors.lg.lg3,
+            twoMonitorsCode: monitors.lg.lg3,
+        },
     },
     Code: {
         key: sc1('c'),
@@ -355,8 +363,8 @@ let myApps = {
             fourMonitors: monitors.asusTwo.bottomTwoThirds,
             threeMonitors: monitors.asusTwo.bottomOneThird,
             twoMonitors: monitors.lg.lg3,
-            twoMonitorsCode: monitors.lg.lg6
-        }
+            twoMonitorsCode: monitors.lg.rightTwoThirds,
+        },
     },
     Terminal: {
         key: sc1('t'),
@@ -364,8 +372,8 @@ let myApps = {
             fourMonitors: monitors.mac.leftHalf,
             threeMonitors: monitors.mac.leftHalf,
             twoMonitors: monitors.mac.leftHalf,
-            twoMonitorsCode: monitors.mac.leftHalf
-        }
+            twoMonitorsCode: monitors.mac.leftHalf,
+        },
     },
     Telegram: {
         key: sc1('r'),
@@ -373,25 +381,25 @@ let myApps = {
             fourMonitors: monitors.asusTwo.leftOneHalfByOneThird,
             threeMonitors: monitors.asusTwo.leftOneThirdTopHalf,
             twoMonitors: monitors.lg.lg4,
-            twoMonitorsCode: monitors.mac.topRightCorner
-        }
+            twoMonitorsCode: monitors.mac.topRightCorner,
+        },
     },
     Messages: {
-        key: sc1('m'),
+        key: sc1('i'),
         position: {
             fourMonitors: monitors.asusTwo.rightOneHalfByOneThird,
             threeMonitors: monitors.asusTwo.rightOneThirdTopHalf,
             twoMonitors: monitors.lg.lg5,
-            twoMonitorsCode: monitors.mac.bottomRightCorner
-        }
+            twoMonitorsCode: monitors.mac.bottomRightCorner,
+        },
     },
     WhatsApp: {
         position: {
             fourMonitors: monitors.asusOne.rightOneHalfByOneThird,
             threeMonitors: monitors.asusTwo.rightOneThirdTopHalf,
             twoMonitors: monitors.lg.lg5,
-            twoMonitorsCode: monitors.mac.bottomRightCorner
-        }
+            twoMonitorsCode: monitors.mac.bottomRightCorner,
+        },
     },
     Thunderbird: {
         key: sc1('e'),
@@ -399,8 +407,8 @@ let myApps = {
             fourMonitors: monitors.asusOne.bottomTwoThirds,
             threeMonitors: monitors.asusTwo.bottomOneThird,
             twoMonitors: monitors.lg.lg1,
-            twoMonitorsCode: monitors.lg.lg1
-        }
+            twoMonitorsCode: monitors.lg.lg1,
+        },
     },
     Firefox: {
         key: sc2('f'),
@@ -408,8 +416,8 @@ let myApps = {
             fourMonitors: monitors.asusOne.bottomTwoThirds,
             threeMonitors: monitors.asusTwo.bottomOneThird,
             twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.lg1
-        }
+            twoMonitorsCode: monitors.lg.leftOneThird,
+        },
     },
     'Google Chrome': {
         key: sc1('b'),
@@ -417,8 +425,8 @@ let myApps = {
             fourMonitors: monitors.lg.leftOneThird,
             threeMonitors: monitors.lg.leftOneThird,
             twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.lg1
-        }
+            twoMonitorsCode: monitors.lg.leftOneThird,
+        },
     },
     Safari: {
         key: sc1('s'),
@@ -426,8 +434,8 @@ let myApps = {
             fourMonitors: monitors.lg.rightOneThird,
             threeMonitors: monitors.lg.rightOneThird,
             twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.lg1
-        }
+            twoMonitorsCode: monitors.lg.leftOneThird,
+        },
     },
     Finder: {
         key: sc1('f'),
@@ -435,8 +443,8 @@ let myApps = {
             fourMonitors: monitors.mac.rightHalf,
             threeMonitors: monitors.mac.rightHalf,
             twoMonitors: monitors.mac.rightHalf,
-            twoMonitorsCode: monitors.mac.rightHalf
-        }
+            twoMonitorsCode: monitors.mac.rightHalf,
+        },
     },
     Preview: {
         key: sc1('p'),
@@ -444,8 +452,8 @@ let myApps = {
             fourMonitors: monitors.mac.rightHalf,
             threeMonitors: monitors.mac.rightHalf,
             twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.lg7
-        }
+            twoMonitorsCode: monitors.lg.leftOneThird,
+        },
     },
     'Microsoft Excel': {
         key: sc1('x'),
@@ -453,9 +461,9 @@ let myApps = {
             fourMonitors: monitors.lg.rightTwoThirds,
             threeMonitors: monitors.lg.rightTwoThirds,
             twoMonitors: monitors.lg.lg3,
-            twoMonitorsCode: monitors.lg.lg3
-        }
-    }
+            twoMonitorsCode: monitors.lg.lg3,
+        },
+    },
 };
 bindApps(myApps, monitorLayouts);
 
@@ -464,18 +472,26 @@ bindKeys(sc1, {
     right: slide('right'),
     left: slide('left'),
     up: slide('up'),
-    down: slide('down')
+    down: slide('down'),
 });
 
 // Moves bound to shortcut 2
 bindKeys(sc2, {
     right: moveToScreen('right'),
     left: moveToScreen('left'),
-    y: monitors.asusTwo.bottomTwoThirds,
-    r: relaunch()
+    y: move(monitors.lg.bottomTwoThirds),
+    r: relaunch(),
 });
 
-//bindKeys(sc3, );
+bindKeys(sc3, {
+    1: move(monitors.lg.lg1),
+    2: move(monitors.lg.lg2),
+    3: move(monitors.lg.lg3),
+    4: move(monitors.lg.lg4),
+    5: move(monitors.lg.lg5),
+    6: move(monitors.lg.lg6),
+    7: move(monitors.lg.lg7),
+});
 
 /**************'
  * Utility functions.
@@ -483,7 +499,7 @@ bindKeys(sc2, {
  */
 
 function relaunch() {
-    return function() {
+    return function () {
         slate.log('Relaunch opreration requested by user. Relaunch slate.');
         let op = slate.operation('relaunch');
         op.run();
@@ -504,7 +520,7 @@ function bindApps(apps, layouts) {
             slate.bind(
                 apps[k].key,
                 slate.operation('focus', {
-                    app: k
+                    app: k,
                 })
             );
         }
@@ -515,7 +531,7 @@ function bindApps(apps, layouts) {
                 // Check if this is a valid standard position
                 slate.log(`Creating layout description for app ${k} and layout ${p} : ${JSON.stringify(apps[k].position[p])}`);
                 if (!apps[k].position[p]) {
-                    slate.log(`ERROR: This poistion is not defined: ${p}`);
+                    slate.log(`ERROR: This position is not defined: ${p}`);
                     continue;
                 }
 
@@ -525,16 +541,21 @@ function bindApps(apps, layouts) {
                 let m = _.clone(apps[k].position[p]);
                 layoutDescription[p][k] = {
                     operations: [
-                        function(windowObject) {
-                            (function() {
-                                slate.log(`--> m: screen: ${m.screen}, height: ${m.height}, width: ${m.width}`);
-                                let action = move(m, windowObject);
-                                action();
+                        function (windowObject) {
+                            (function () {
+                                slate.log(`[Slate] --> m: screen: ${m.screen}, height: ${m.height}, width: ${m.width}`);
+                                if (m.screen < 100) {
+                                    let action = move(m, windowObject);
+                                    action();
+                                } else {
+                                    slate.log(`Bad screen, skip move.`);
+                                }
                             })();
-                        }
+                        },
                     ],
+                    'ignore-fail': true,
                     'main-first': true,
-                    repeat: true
+                    repeat: true,
                 };
             }
         }
@@ -550,7 +571,7 @@ function bindApps(apps, layouts) {
         slate.bind(
             layouts[l].key,
             slate.operation('layout', {
-                name: layout
+                name: layout,
             })
         );
     }
@@ -590,14 +611,19 @@ function move(opts, windowObject) {
         x: topX,
         y: topY,
         width: windowWidth,
-        height: windowHeight
+        height: windowHeight,
     };
 
     if (opts.hasOwnProperty('screen')) {
         moveTo.screen = opts.screen;
     }
 
-    return function() {
+    return function () {
+        if (moveTo.screen > 100 || windowObject.screen > 100) {
+            slate.log(`[Slate] Bad Screen ID ${moveTo.screen}. Skip move.`);
+            return;
+        }
+
         logCoords(moveTo, windowObject);
         let op = slate.operation('move', moveTo);
         if (windowObject) {
@@ -613,13 +639,13 @@ function slide(dir) {
         dir = dir.toLowerCase();
     }
 
-    return function() {
+    return function () {
         let win = slate.window();
         let slideTo = {
             x: win.rect().x,
             y: win.rect().y,
             width: win.rect().width,
-            height: win.rect().height
+            height: win.rect().height,
         };
         let screen = slate.screen();
         let screenOriginX = screen.rect().x;
@@ -666,7 +692,7 @@ function slide(dir) {
                 break;
             default:
                 slate.log(`slide error: Bad direction ${dir} possible values are: up, down, right, left`);
-                return function() {
+                return function () {
                     slate.log(`slide error: Bad direction ${dir} possible values are: up, down, right, left`);
                 };
         }
@@ -682,12 +708,12 @@ function moveToScreen(dir) {
         dir = dir.toLowerCase();
     }
 
-    return function() {
+    return function () {
         let window = {
             x: slate.window().rect().x,
             y: slate.window().rect().y,
             width: slate.window().rect().width,
-            height: slate.window().rect().height
+            height: slate.window().rect().height,
         };
         slate.log(`Current Window Coordinates: ${window.x}, ${window.y}`);
 
@@ -751,7 +777,7 @@ function moveToScreen(dir) {
             x: newScreenOriginX + offsetX * scaleX,
             y: newScreenOriginY + offsetY * scaleY,
             width: window.width * scaleX,
-            height: window.height * scaleY
+            height: window.height * scaleY,
         };
         slate.log(`moveToScreen: ${screen.id()} -> ${newScreen.id()}`);
         slate.log(`[SLATE] newScreenOriginX: ${newScreenOriginX}`);
@@ -768,8 +794,17 @@ function moveToScreen(dir) {
 function logCoords(c, win) {
     let screen = slate.screen();
     slate.log('[SLATE] -------------- Coords Log --------------');
+    if (!screen) {
+        slate.log('[SLATE] Bad screen. return');
+        return;
+    }
+
     slate.log(`[SLATE] number of screens: ${slate.screenCount()}`);
     slate.log(`[SLATE] current screen: ${screen.id()}`);
+    if (screen.id() > 100) {
+        slate.log(`[Slate] Bad screen id ${screen.id()}. Skip log coordinates`);
+        return;
+    }
     slate.log(`[SLATE] screenOriginX: ${screen.rect().x}`);
     slate.log(`[SLATE] screenOriginY: ${screen.rect().y}`);
     slate.log(`[SLATE] screenSizeX: ${screen.rect().width}`);

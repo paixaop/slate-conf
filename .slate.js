@@ -6,6 +6,10 @@
 
 slate.log('[SLATE] -------------- Started Loading Config from .slate.js --------------');
 
+function highestScreenId() {
+    return 100;
+}
+
 let monitors = {
     asusOne: {
         resolution: '1692x3008',
@@ -544,7 +548,7 @@ function bindApps(apps, layouts) {
                         function (windowObject) {
                             (function () {
                                 slate.log(`[Slate] --> m: screen: ${m.screen}, height: ${m.height}, width: ${m.width}`);
-                                if (m.screen < 100) {
+                                if (m.screen < highestScreenId()) {
                                     let action = move(m, windowObject);
                                     action();
                                 } else {
@@ -619,7 +623,7 @@ function move(opts, windowObject) {
     }
 
     return function () {
-        if (moveTo.screen > 100 || windowObject.screen > 100) {
+        if (moveTo && windowObject && (moveTo.screen > highestScreenId() || windowObject.screen > highestScreenId())) {
             slate.log(`[Slate] Bad Screen ID ${moveTo.screen}. Skip move.`);
             return;
         }
@@ -801,7 +805,7 @@ function logCoords(c, win) {
 
     slate.log(`[SLATE] number of screens: ${slate.screenCount()}`);
     slate.log(`[SLATE] current screen: ${screen.id()}`);
-    if (screen.id() > 100) {
+    if (screen.id() > highestScreenId()) {
         slate.log(`[Slate] Bad screen id ${screen.id()}. Skip log coordinates`);
         return;
     }

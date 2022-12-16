@@ -58,7 +58,7 @@ and makes configuration a bit easier than standard slate config file
 
 To use the JS config you need to change the values of `screens` variable to match you own monitors.
 
-Configure your screens/monitors. These definitions MUST match the screens on your
+Configure your screens/monitors. The monitor resolutions MUST match the screens on your
 setup. To configure your screens click 'Current Window Info' from the slate menu.
 
 You should see something like:
@@ -85,19 +85,15 @@ Use this information in the `screens` variable.
 let screens = {
     samsung: {
         resolution: "1200x1920",
-        id: 0
     },
     asus: {
         resolution: "1692x3008",
-        id: 1
     },
     lg: {
         resolution: "3440x1440",
-        id: 2
     },
     mac: {
         resolution: "1440x900",
-        id: 3
     }
 };
 ```

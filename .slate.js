@@ -6,15 +6,17 @@
  */
 
 // Set Your Modifier Keys
-var HYPER_1 = ':ctrl;alt;cmd';
-var HYPER_2 = ':ctrl;cmd';
-var HYPER_3 = ':ctrl;cmd;shift;alt';
+var KEY_MODIFIER_1 = 'ctrl;alt;cmd';
+var KEY_MODIFIER_2 = 'ctrl;cmd';
+var KEY_MODIFIER_3 = 'ctrl;cmd;shift;alt';
 
 // Suppress some of the more verbose log messages
 var LOG_AREAS = 0;
 var LOG_LAYOUT = 1;
 
-slate.log('[SLATE] -------------- Started Loading Config from .slate.js --------------');
+slate.log('#########################################################################################');
+slate.log('############################# Loading Config from .slate.js #############################');
+slate.log('#########################################################################################');
 slate.defaultToCurrentScreen = true;
 slate.secondsBeforeRepeat = 0.4;
 slate.secondsBetweenRepeat = 0.1;
@@ -23,150 +25,145 @@ slate.nudgePercentOf = 'screenSize';
 slate.resizePercentOf = 'screenSize';
 
 let monitors = initMonitors({
-    lg: {
-        resolution: ['6720x1890', '5120x1440']
-    },
-    mac: {
-        resolution: '1792x1120'
-    },
+    lg: ['6720x1890', '5120x1440'],
+    mac: '1792x1120'
 });
 
-let monitorLayouts = {
-    twoMonitors: {
-        key: sc1('2'),
+bindApps({ 
+    layouts: {
+        twoMonitors: {
+            key: sc1('2'),
+        },
+        twoMonitorsCode: {
+            key: sc1('w'),
+        },
+        twoMonitorsMail: {
+            key: sc1('3'),
+        },
     },
-    twoMonitorsCode: {
-        key: sc1('w'),
-    },
-    twoMonitorsMail: {
-        key: sc1('3'),
-    },
-};
+    apps: {
+        Mail: {
+            key: sc1('e'),
+            layouts: {
+                twoMonitors: monitors.lg.lg1,
+                twoMonitorsCode: monitors.lg.lg1,
+                twoMonitorsMail: monitors.lg.lg12
+            },
+        },
+        Calendar: {
+            key: sc1('l'),
+            layouts: {
+                twoMonitors: monitors.mac.rightHalf,
+                twoMonitorsCode: monitors.mac.rightHalf,
+                twoMonitorsMail: monitors.mac.rightHalf
+            },
+        },
+        'Microsoft Teams': {
+            key: sc1('m'),
+            layouts: {
+                twoMonitors: monitors.lg.lg3,
+                twoMonitorsCode: monitors.lg.lg3,
+                twoMonitorsMail: monitors.lg.lg11
+            },
+        },
+        Code: {
+            key: sc1('c'),
+            layouts: {
+                twoMonitors: monitors.lg.lg3,
+                twoMonitorsCode: monitors.lg.rightTwoThirds,
+                twoMonitorsMail: monitors.lg.lg11
+            },
+        },
+        Terminal: {
+            key: sc1('t'),
+            layouts: {
+                twoMonitors: monitors.mac.leftHalf,
+                twoMonitorsCode: monitors.mac.leftHalf,
+                twoMonitorsMail: monitors.mac.leftHalf
+            },
+        },
+        Telegram: {
+            key: sc1('r'),
+            layouts: {
+                twoMonitors: monitors.lg.lg4,
+                twoMonitorsCode: monitors.mac.topRightCorner,
+                twoMonitorsMail: monitors.lg.lg8
+            },
+        },
+        Messages: {
+            key: sc1('i'),
+            layouts: {
+                twoMonitors: monitors.lg.lg5,
+                twoMonitorsCode: monitors.mac.bottomRightCorner,
+                twoMonitorsMail: monitors.lg.lg9,
+            },
+        },
+        WhatsApp: {
+            layouts: {
+                twoMonitors: monitors.lg.lg5,
+                twoMonitorsCode: monitors.mac.bottomRightCorner,
+                twoMonitorsMail: monitors.lg.lg9
+            },
+        },
+        Thunderbird: {
+            key: sc1('e'),
+            layouts: {
+                twoMonitors: monitors.lg.lg1,
+                twoMonitorsCode: monitors.lg.lg1,
+                twoMonitorsMail: monitors.lg.lg12
+            },
+        },
+        Firefox: {
+            key: sc2('f'),
+            layouts: {
+                twoMonitors: monitors.lg.lg2,
+                twoMonitorsCode: monitors.lg.leftOneThird,
+                twoMonitorsMail: monitors.lg.lg10
+            },
+        },
+        'Google Chrome': {
+            key: sc1('b'),
+            layouts: {
+                twoMonitors: monitors.lg.lg2,
+                twoMonitorsCode: monitors.lg.leftOneThird,
+                twoMonitorsMail: monitors.lg.lg10
+            },
+        },
+        Safari: {
+            key: sc1('s'),
+            layouts: {
+                twoMonitors: monitors.lg.lg2,
+                twoMonitorsCode: monitors.lg.leftOneThird,
+                twoMonitorsMail: monitors.lg.lg10
+            },
+        },
+        Finder: {
+            key: sc1('f'),
+            layouts: {
+                twoMonitors: monitors.mac.rightHalf,
+                twoMonitorsCode: monitors.mac.rightHalf,
+                twoMonitorsMail: monitors.mac.rightHalf
+            },
+        },
+        Preview: {
+            key: sc1('p'),
+            layouts: {
+                twoMonitors: monitors.lg.lg2,
+                twoMonitorsCode: monitors.lg.leftOneThird,
+                twoMonitorsMail: monitors.lg.lg10
+            },
+        },
+        'Microsoft Excel': {
+            key: sc1('x'),
+            layouts: {
+                twoMonitors: monitors.lg.lg3,
+                twoMonitorsCode: monitors.lg.lg3,
+                twoMonitorsMail: monitors.lg.lg10
+            },
+        },
+    }
+});
 
-// Applications Aliases
-let myApps = {
-    Mail: {
-        key: sc1('e'),
-        position: {
-            twoMonitors: monitors.lg.lg1,
-            twoMonitorsCode: monitors.lg.lg1,
-            twoMonitorsMail: monitors.lg.lg12
-        },
-    },
-    Calendar: {
-        key: sc1('l'),
-        position: {
-            twoMonitors: monitors.mac.rightHalf,
-            twoMonitorsCode: monitors.mac.rightHalf,
-            twoMonitorsMail: monitors.mac.rightHalf
-        },
-    },
-    'Microsoft Teams': {
-        key: sc1('m'),
-        position: {
-            twoMonitors: monitors.lg.lg3,
-            twoMonitorsCode: monitors.lg.lg3,
-            twoMonitorsMail: monitors.lg.lg11
-        },
-    },
-    Code: {
-        key: sc1('c'),
-        position: {
-            twoMonitors: monitors.lg.lg3,
-            twoMonitorsCode: monitors.lg.rightTwoThirds,
-            twoMonitorsMail: monitors.lg.lg11
-        },
-    },
-    Terminal: {
-        key: sc1('t'),
-        position: {
-            twoMonitors: monitors.mac.leftHalf,
-            twoMonitorsCode: monitors.mac.leftHalf,
-            twoMonitorsMail: monitors.mac.leftHalf
-        },
-    },
-    Telegram: {
-        key: sc1('r'),
-        position: {
-            twoMonitors: monitors.lg.lg4,
-            twoMonitorsCode: monitors.mac.topRightCorner,
-            twoMonitorsMail: monitors.lg.lg8
-        },
-    },
-    Messages: {
-        key: sc1('i'),
-        position: {
-            twoMonitors: monitors.lg.lg5,
-            twoMonitorsCode: monitors.mac.bottomRightCorner,
-            twoMonitorsMail: monitors.lg.lg9,
-        },
-    },
-    WhatsApp: {
-        position: {
-            twoMonitors: monitors.lg.lg5,
-            twoMonitorsCode: monitors.mac.bottomRightCorner,
-            twoMonitorsMail: monitors.lg.lg9
-        },
-    },
-    Thunderbird: {
-        key: sc1('e'),
-        position: {
-            twoMonitors: monitors.lg.lg1,
-            twoMonitorsCode: monitors.lg.lg1,
-            twoMonitorsMail: monitors.lg.lg12
-        },
-    },
-    Firefox: {
-        key: sc2('f'),
-        position: {
-            twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.leftOneThird,
-            twoMonitorsMail: monitors.lg.lg10
-        },
-    },
-    'Google Chrome': {
-        key: sc1('b'),
-        position: {
-            twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.leftOneThird,
-            twoMonitorsMail: monitors.lg.lg10
-        },
-    },
-    Safari: {
-        key: sc1('s'),
-        position: {
-            twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.leftOneThird,
-            twoMonitorsMail: monitors.lg.lg10
-        },
-    },
-    Finder: {
-        key: sc1('f'),
-        position: {
-            twoMonitors: monitors.mac.rightHalf,
-            twoMonitorsCode: monitors.mac.rightHalf,
-            twoMonitorsMail: monitors.mac.rightHalf
-        },
-    },
-    Preview: {
-        key: sc1('p'),
-        position: {
-            twoMonitors: monitors.lg.lg2,
-            twoMonitorsCode: monitors.lg.leftOneThird,
-            twoMonitorsMail: monitors.lg.lg10
-        },
-    },
-    'Microsoft Excel': {
-        key: sc1('x'),
-        position: {
-            twoMonitors: monitors.lg.lg3,
-            twoMonitorsCode: monitors.lg.lg3,
-            twoMonitorsMail: monitors.lg.lg10
-        },
-    },
-};
-
-bindApps(myApps, monitorLayouts);
 
 // Moves bound to shortcut 1
 bindKeys(sc1, {
@@ -201,15 +198,15 @@ bindKeys(sc3, {
 
 // Key shortcuts
 function sc1(key) {
-    return key + HYPER_1;
+    return key + ':' + KEY_MODIFIER_1;
 }
 
 function sc2(key) {
-    return key + HYPER_2;
+    return key + ':' + KEY_MODIFIER_2;
 }
 
 function sc3(key) {
-    return key + HYPER_3;
+    return key + ':' + KEY_MODIFIER_3;
 }
 
 function relaunch() {
@@ -220,8 +217,11 @@ function relaunch() {
     };
 }
 
-function bindApps(apps, layouts) {
-    slate.log(`Bindind Apps to keys and layouts`);
+function bindApps(options) {
+    slate.log(`Binding Apps to keys and layouts`);
+    let apps = options.apps;
+    let layouts = options.layouts;
+
     let keys = Object.keys(apps);
     let layoutDescription = {};
     if (!apps) {
@@ -240,13 +240,13 @@ function bindApps(apps, layouts) {
         }
 
         // If there's a position assign app in layout
-        if (apps[k].position) {
-            for (let p in apps[k].position) {
+        if (apps[k].layouts) {
+            for (let p in apps[k].layouts) {
                 // Check if this is a valid standard position
                 if( LOG_LAYOUT ) {
-                    slate.log(`Creating layout description for app ${k} and layout ${p} : ${JSON.stringify(apps[k].position[p])}`);
+                    slate.log(`Creating layout description for app ${k} and layout ${p} : ${JSON.stringify(apps[k].layouts[p])}`);
                 }
-                if (!apps[k].position[p]) {
+                if (!apps[k].layouts[p]) {
                     slate.log(`ERROR: This position is not defined: ${p}`);
                     continue;
                 }
@@ -254,13 +254,13 @@ function bindApps(apps, layouts) {
                 if (!layoutDescription[p]) {
                     layoutDescription[p] = {};
                 }
-                let m = _.clone(apps[k].position[p]);
+                let m = _.clone(apps[k].layouts[p]);
                 layoutDescription[p][k] = {
                     operations: [
                         function (windowObject) {
                             (function () {
-                                slate.log(`[Slate] Layout ${p}: App: ${k}`);
-                                slate.log(`[Slate] --> m: screen: ${m.screen}, height: ${m.height}, width: ${m.width}`);
+                                slate.log(`Layout ${p}: App: ${k}`);
+                                slate.log(`--> m: screen: ${m.screen}, height: ${m.height}, width: ${m.width}`);
                                 if (m.screen < highestScreenId()) {
                                     let action = move(m, windowObject);
                                     action();
@@ -281,7 +281,7 @@ function bindApps(apps, layouts) {
     for (let l in layoutDescription) {
         //slate.log(`Layout ${JSON.stringify(layoutDescription[l])}`);
         slate.layout(l, layoutDescription[l]);
-        slate.log(`Creating layout ${l}.`);
+        slate.log(`Creating layout ${l} bound to Key: ${layouts[l].key}`);
         if (!layouts[l]) {
             slate.log(`Bad layout name in app definition. ${l} not found in layouts ${JSON.stringify(layouts)}`);
             continue;
@@ -337,8 +337,8 @@ function move(opts, windowObject) {
     }
 
     return function () {
-        if (moveTo && windowObject && (moveTo.screen > highestScreenId() || windowObject.screen > highestScreenId())) {
-            slate.log(`[Slate] Bad Screen ID ${moveTo.screen}. Skip move.`);
+        if (moveTo && windowObject && (moveTo.screen >= highestScreenId() || windowObject.screen >= highestScreenId())) {
+            slate.log(`Bad Screen ID ${moveTo.screen}. Skip move.`);
             return;
         }
 
@@ -498,10 +498,10 @@ function moveToScreen(dir) {
             height: window.height * scaleY,
         };
         slate.log(`moveToScreen: ${screen.id()} -> ${newScreen.id()}`);
-        slate.log(`[SLATE] newScreenOriginX: ${newScreenOriginX}`);
-        slate.log(`[SLATE] newScreenOriginY: ${newScreenOriginY}`);
-        slate.log(`[SLATE] newScreenSizeX: ${newScreenSizeX}`);
-        slate.log(`[SLATE] newScreenSizeY: ${newScreenSizeY}`);
+        slate.log(`newScreenOriginX: ${newScreenOriginX}`);
+        slate.log(`newScreenOriginY: ${newScreenOriginY}`);
+        slate.log(`newScreenSizeX: ${newScreenSizeX}`);
+        slate.log(`newScreenSizeY: ${newScreenSizeY}`);
 
         logCoords(newScreenCoords);
         let op = slate.operation('move', newScreenCoords);
@@ -511,39 +511,39 @@ function moveToScreen(dir) {
 
 function logCoords(c, win) {
     let screen = slate.screen();
-    slate.log('[SLATE] -------------- Coords Log --------------');
+    slate.log('-------------- Coords Log --------------');
     if (!screen) {
-        slate.log('[SLATE] Bad screen. return');
+        slate.log('Bad screen. return');
         return;
     }
 
-    slate.log(`[SLATE] number of screens: ${slate.screenCount()}`);
-    slate.log(`[SLATE] current screen: ${screen.id()}`);
+    slate.log(`number of screens: ${slate.screenCount()}`);
+    slate.log(`current screen: ${screen.id()}`);
     if (screen.id() > highestScreenId()) {
-        slate.log(`[Slate] Bad screen id ${screen.id()}. Skip log coordinates`);
+        slate.log(`Bad screen id ${screen.id()}. Skip log coordinates`);
         return;
     }
-    slate.log(`[SLATE] screenOriginX: ${screen.rect().x}`);
-    slate.log(`[SLATE] screenOriginY: ${screen.rect().y}`);
-    slate.log(`[SLATE] screenSizeX: ${screen.rect().width}`);
-    slate.log(`[SLATE] screenSizeY: ${screen.rect().height}`);
+    slate.log(`screenOriginX: ${screen.rect().x}`);
+    slate.log(`screenOriginY: ${screen.rect().y}`);
+    slate.log(`screenSizeX: ${screen.rect().width}`);
+    slate.log(`screenSizeY: ${screen.rect().height}`);
 
     if (win) {
         let title = win.title();
         let app = win.app();
         let name = app.name();
-        slate.log(`[SLATE] App: ${name}, Window: ${title}`);
+        slate.log(`App: ${name}, Window: ${title}`);
     }
 
-    slate.log(`[SLATE] Move to:`);
+    slate.log(`Move to:`);
 
-    if (c.screen) slate.log(`[SLATE] screen: ${c.screen}`);
+    if (c.screen) slate.log(`screen: ${c.screen}`);
 
-    slate.log('[SLATE] x: ' + c.x);
-    slate.log('[SLATE] y: ' + c.y);
-    slate.log('[SLATE] width: ' + c.width);
-    slate.log('[SLATE] height: ' + c.height);
-    slate.log('[SLATE] ----------------------------------------');
+    slate.log('x: ' + c.x);
+    slate.log('y: ' + c.y);
+    slate.log('width: ' + c.width);
+    slate.log('height: ' + c.height);
+    slate.log('----------------------------------------');
 }
 
 function createAreas(areas, horizontalAreas, verticalAreas) {
@@ -568,35 +568,53 @@ function createAreas(areas, horizontalAreas, verticalAreas) {
     return areas;
 }
 
-function setScreenIDs(monitors) {
+function setScreenIDs(options) {
+    let monitors = {};
     slate.log(`Detect screen IDs`);
     slate.eachScreen((screen) => {
+    //for(let id = 0; i < slate.screenCount(); i++) {
         // do something with the screenObject. this function will run once per screen.
-        let id=screen.id();
+        let id = screen.id();
         let r = screen.rect();
         let resolution = `${r.width}x${r.height}`;
-        slate.log(`Screen: ${id}, resolution ${resolution}`);
+        slate.log(`Screen: Id: ${id}, resolution ${resolution}`);
         
-        for(let m in monitors) {
+        for(let m in options) {
+            if( !monitors[m] ) {
+                monitors[m] = { id: highestScreenId() };
+            }
+
+            // Skip monitors that already have an ID
+            if( monitors[m].id !== highestScreenId() ) {
+                continue;
+            }
+
             // resolutions can be an array of string resolutions as monitors can have 
             // multiple resolutions available
-            if( Array.isArray(monitors[m].resolution) ) {
-                // slate.log(`Monitor ${m} has multiple resolutions ${monitors[m].resolution.join(", ")}`);
-                for(let res in monitors[m].resolution) {
-                    if( monitors[m].resolution[res] == resolution) {
-                        monitors[m].resolution = resolution;
-                        monitors[m].id = id;
-                        slate.log(`Monitor ${m} associated with screen: ${id} with resolution ${resolution}`);
+            if( Array.isArray(options[m]) ) {
+                // slate.log(`Monitor ${m} has multiple resolutions ${options[m].join(", ")}`);
+                // slate.log(`Monitors: ${JSON.stringify(monitors)}`);
+                for(let res in options[m]) {
+                    if( options[m][res] == resolution) {
+                        monitors[m] = { resolution, id };
+                        slate.log(`Monitor ${m} [${res}] associated with screen: ${id} at resolution ${resolution}`);
+                        // slate.log(`Monitors: ${JSON.stringify(monitors)}`);
                         break;
                     }        
                 }
             }
-            else if( monitors[m].resolution == resolution) {
-                monitors[m].id = id;
+            else if( options[m] == resolution ) {
+                monitors[m] = { resolution, id };
                 slate.log(`Monitor ${m} associated with screen: ${id} with resolution ${resolution}`);
+                // slate.log(`Monitors: ${JSON.stringify(monitors)}`);
             }
         } 
     });
+    for(let m in monitors) {
+        if( monitors[m].id == highestScreenId() ) {
+            slate.log(`WARNING: Monitor ${m} @ ${options[m]} not detected or has different resolution than specified in Slate configuration.`)
+        }
+    }
     return monitors;
 }
 
@@ -916,4 +934,7 @@ function initMonitors(options) {
     return monitors;
 }
 
-slate.log('[SLATE] -------------- Finished Loading Config from .slate.js -------------');
+slate.log('###################################################################');
+slate.log('############################ Finished #############################');
+slate.log('###################################################################');
+
